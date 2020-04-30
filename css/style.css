@@ -1,0 +1,72 @@
+body {
+	font-family: sans-serif;
+	color: black;
+	text-align: center;
+}
+
+p {
+	font-size: medium;
+}
+
+input {
+	width: 50px;
+}
+
+.outer {
+	border: double;
+	padding: 50px;
+	margin: 25px;
+	text-align: center;
+}
+
+.input {
+	margin: 5px;
+}
+
+button {
+	margin-top: 10px;
+}
+
+.guess-list {
+	max-height: 150px;
+	padding: 5px;
+	overflow-x: auto;
+	border: solid 1px;
+}
+
+.clearfix {
+	font-size: x-large;
+	font-weight: bold;
+}
+
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.min-view {
+	float: left;
+	margin-right: 5px;
+}
+
+.max-view {
+	float: right;
+	margin-left: 5px;
+}
+
+.guess-input {
+	margin-top: 30px;
+}
+
+.start {
+	display: block;
+}
+
+.game {
+	display: none;
+}
+
+.win {
+	display: none;
+}

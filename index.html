@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Guess the Number Lab</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<header>
+		<h1>Guess the Number!</h1>
+	</header>
+
+	<div class="outer start">
+		<h2>Enter limits to start the game:</h2>
+		<div class="limit-input">
+			<div class="input">
+				<label for="min-input">Minimum Number:</label>
+				<input type="number" id="min-input" name="min-input" placeholder="1">
+			</div>
+			<div class="input">
+				<label for="max-input">Maximum Number:</label>
+				<input type="number" id="max-input" name="max-input" placeholder="100">
+			</div>
+		</div>
+		<button type="button" id="start-game">Enter</button>
+	</div>
+
+	<div class="outer game">
+		<div class="clearfix">
+			<div class="min-view">Minimum: <span class="min">1</span></div>
+			<div class="max-view">Maximum: <span class="max">100</span></div>
+		</div>
+		<div class="prev">
+			<h3>Previous guesses:</h3>
+			<p class="guess-list">(Previous guesses show here)</p>
+			<h4>Total guesses: <span class="count">0</span></h4>
+			<p class="wrong">What is your guess?</p>
+		</div>
+		<div class="guess-input input">
+			<label for="guess">Guess a number between <span class="min">1</span> and <span class="max">100</span>:</label>
+			<input type="number" id="guess" name="guess">
+		</div>
+		<button type="button" id="enter-guess">Guess</button>
+	</div>
+
+	<div class="outer win">
+		<h3>Congrats! You guessed the secret number <span id="secret">0</span> in <span class="count">1</span> <span class="plural">guess</span></h3>
+		<button type="button" id="restart">Click here to play again!</button>
+	</div>
+
+	<script src="js/script.js"></script>
+</body>
+</html>
