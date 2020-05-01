@@ -70,20 +70,20 @@ const game = {
 	prevGuesses: [],
 
 	getLimits: function() {
-		const min = minIn.value;
-		const max = maxIn.value;
-		minIn.value = ``;
-		maxIn.value = ``;
+		const min = MIN_IN.value;
+		const max = MAX_IN.value;
+		MIN_IN.value = ``;
+		MAX_IN.value = ``;
 		game.smallestNum = (min === `` ? 1 : parseInt(min));
 		game.biggestNum = (max === `` ? 100 : parseInt(max));
 		if (game.smallestNum > game.biggestNum) {
 			alert(`Error: Invalid range`);
 			return false;
 		} else {
-			intro.display = "none";
-			main.display = "block";
-			minOut.forEach(e => e.textContent = game.smallestNum);
-			maxOut.forEach(e => e.textContent = game.biggestNum);
+			INTRO.display = "none";
+			MAIN.display = "block";
+			MIN_OUT.forEach(e => e.textContent = game.smallestNum);
+			MAX_OUT.forEach(e => e.textContent = game.biggestNum);
 			game.play();
 			return true;
 		}
@@ -94,8 +94,8 @@ const game = {
 	},
 
 	getGuess: function() {
-		const input = parseInt(guessIn.value);
-		guessIn.value = ``;
+		const input = parseInt(GUESS_IN.value);
+		GUESS_IN.value = ``;
 		if (isNaN(input)) {
 			return false;
 		} else if (input < game.smallestNum || input > game.biggestNum) {
@@ -110,20 +110,20 @@ const game = {
 	render: function(input) {
 		if (input < game.secretNum) {
 			game.prevGuesses.push(`${input} (low)`);
-			wrong.textContent = `Your guess was too low!`;
+			WRONG.textContent = `Your guess was too low!`;
 		} else if (input > game.secretNum) {
 			game.prevGuesses.push(`${input} (high)`);
-			wrong.textContent = `Your guess was too high!`;
+			WRONG.textContent = `Your guess was too high!`;
 		} else {
 			game.prevGuesses.push(`${input} (correct)`);
 		}
-		list.textContent = game.prevGuesses.join(`, `);
-		countOut.forEach(e => e.textContent = game.prevGuesses.length);
+		LIST.textContent = game.prevGuesses.join(`, `);
+		COUNT_OUT.forEach(e => e.textContent = game.prevGuesses.length);
 		if (input === game.secretNum) {
-			secret.textContent = game.secretNum;
-			plural.textContent = game.prevGuesses.length > 1 ? `guesses!` : `guess! Are you cheating?`;
-			main.display = "none";
-			win.display = "block";
+			SECRET.textContent = game.secretNum;
+			PLURAL.textContent = game.prevGuesses.length > 1 ? `guesses!` : `guess! Are you cheating?`;
+			MAIN.display = "none";
+			WIN.display = "block";
 			return true;
 		} else {
 			return false;
@@ -134,11 +134,11 @@ const game = {
 		while (game.prevGuesses.length) {
 			game.prevGuesses.pop();
 		}
-		countOut.forEach(e => e.textContent = `0`);
-		list.textContent = `(Previous guesses show here)`;
-		wrong.textContent = `What is your guess?`;
-		intro.display = "block";
-		win.display = "none";
+		COUNT_OUT.forEach(e => e.textContent = `0`);
+		LIST.textContent = `(Previous guesses show here)`;
+		WRONG.textContent = `What is your guess?`;
+		INTRO.display = "block";
+		WIN.display = "none";
 	}
 };
 
@@ -148,40 +148,40 @@ const game = {
 // #########
 
 // Display
-const intro = document.querySelector(".start").style;
-const main = document.querySelector(".game").style;
-const win = document.querySelector(".win").style;
+const INTRO = document.querySelector(".start").style;
+const MAIN = document.querySelector(".game").style;
+const WIN = document.querySelector(".win").style;
 
 //Buttons
-const start = document.querySelector("#start-game");
-const guess = document.querySelector("#enter-guess");
-const refresh = document.querySelector("#restart");
+const START = document.querySelector("#start-game");
+const GUESS = document.querySelector("#enter-guess");
+const REFRESH = document.querySelector("#restart");
 
 // Inputs
-const minIn = document.querySelector("#min-input");
-const maxIn = document.querySelector("#max-input");
-const guessIn = document.querySelector("#guess");
+const MIN_IN = document.querySelector("#min-input");
+const MAX_IN = document.querySelector("#max-input");
+const GUESS_IN = document.querySelector("#guess");
 
 // Multiple outputs
-const minOut = document.querySelectorAll(".min");
-const maxOut = document.querySelectorAll(".max");
-const countOut = document.querySelectorAll(".count");
+const MIN_OUT = document.querySelectorAll(".min");
+const MAX_OUT = document.querySelectorAll(".max");
+const COUNT_OUT = document.querySelectorAll(".count");
 
 // Single output
-const wrong = document.querySelector(".wrong");
-const list = document.querySelector(".guess-list");
-const secret = document.querySelector("#secret");
-const plural = document.querySelector(".plural");
+const WRONG = document.querySelector(".wrong");
+const LIST = document.querySelector(".guess-list");
+const SECRET = document.querySelector("#secret");
+const PLURAL = document.querySelector(".plural");
 
 
 // #############
 // # Listeners #
 // #############
 
-start.addEventListener("click", game.getLimits);
-guess.addEventListener("click", game.getGuess);
-refresh.addEventListener("click", game.restart);
-guessIn.addEventListener("keyup", function (event) {
+START.addEventListener("click", game.getLimits);
+GUESS.addEventListener("click", game.getGuess);
+REFRESH.addEventListener("click", game.restart);
+GUESS_IN.addEventListener("keyup", function (event) {
 	if (event.keyCode === 13) {
 		game.getGuess();
 	}
